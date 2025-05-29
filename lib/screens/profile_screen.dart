@@ -3,8 +3,8 @@ import 'package:danantara/profil/help_center_screen.dart';
 import 'package:danantara/profil/payment_method_screen.dart';
 import 'package:danantara/profil/referral_screen.dart';
 import 'package:danantara/profil/scurity_screen.dart';
+import 'package:danantara/profil/settings_screen.dart';
 import 'package:danantara/profil/verification_screen.dart';
-import '../profil/settings_screen.dart'; 
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -20,26 +20,21 @@ class ProfileScreen extends StatelessWidget {
             expandedHeight: 200.0,
             floating: false,
             pinned: true,
-            backgroundColor: Theme.of(context).colorScheme.primary,
+            backgroundColor: Colors.blue,
             flexibleSpace: FlexibleSpaceBar(
               background: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [
-                      Theme.of(context).colorScheme.primary,
-                      Theme.of(context).colorScheme.primary.withBlue(200),
-                    ],
+                    colors: [Colors.blue, Colors.blue.shade700],
                   ),
                 ),
                 child: Stack(
                   children: [
                     // Background pattern
                     Positioned.fill(
-                      child: CustomPaint(
-                        painter: BackgroundPatternPainter(),
-                      ),
+                      child: CustomPaint(painter: BackgroundPatternPainter()),
                     ),
                     // Profile info
                     Positioned(
@@ -55,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                               child: Icon(
                                 Icons.person,
                                 size: 50,
-                                color: Theme.of(context).colorScheme.primary,
+                                color: Colors.blue,
                               ),
                             ),
                             SizedBox(height: 12),
@@ -110,7 +105,7 @@ class ProfileScreen extends StatelessWidget {
               ),
             ],
           ),
-          
+
           // Profile Stats
           SliverToBoxAdapter(
             child: Container(
@@ -130,33 +125,22 @@ class ProfileScreen extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [
-                    Colors.white,
-                    Colors.grey.shade50,
-                  ],
+                  colors: [Colors.white, Colors.grey.shade50],
                 ),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   _buildStatItem(context, 'Level', 'Gold', Icons.military_tech),
-                  Container(
-                    height: 40,
-                    width: 1,
-                    color: Colors.grey.shade300,
-                  ),
+                  Container(height: 40, width: 1, color: Colors.grey.shade300),
                   _buildStatItem(context, 'Poin', '12,500', Icons.star),
-                  Container(
-                    height: 40,
-                    width: 1,
-                    color: Colors.grey.shade300,
-                  ),
+                  Container(height: 40, width: 1, color: Colors.grey.shade300),
                   _buildStatItem(context, 'Voucher', '8', Icons.card_giftcard),
                 ],
               ),
             ),
           ),
-          
+
           // Menu Items
           SliverToBoxAdapter(
             child: Padding(
@@ -165,7 +149,10 @@ class ProfileScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                      horizontal: 4.0,
+                    ),
                     child: Text(
                       'Pengaturan Akun',
                       style: TextStyle(
@@ -197,10 +184,13 @@ class ProfileScreen extends StatelessWidget {
                     description: 'Kelola metode pembayaran Anda',
                     navigateTo: PaymentMethodScreen(),
                   ),
-                  
+
                   SizedBox(height: 8),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 4.0),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 12.0,
+                      horizontal: 4.0,
+                    ),
                     child: Text(
                       'Bantuan & Informasi',
                       style: TextStyle(
@@ -231,7 +221,7 @@ class ProfileScreen extends StatelessWidget {
                     description: 'Informasi versi dan pengembang',
                     navigateTo: AboutAppScreen(),
                   ),
-                  
+
                   SizedBox(height: 30),
                   SizedBox(
                     width: double.infinity,
@@ -257,36 +247,41 @@ class ProfileScreen extends StatelessWidget {
                         // Show logout confirmation
                         showDialog(
                           context: context,
-                          builder: (context) => AlertDialog(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            title: Text('Keluar'),
-                            content: Text('Anda yakin ingin keluar dari aplikasi?'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Batal'),
-                              ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red.shade400,
-                                  foregroundColor: Colors.white,
+                          builder:
+                              (context) => AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
                                 ),
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                  // Navigate to login screen
-                                  Navigator.of(context).pushNamedAndRemoveUntil(
-                                    '/',
-                                    (route) => false,
-                                  );
-                                },
-                                child: Text('Keluar'),
+                                title: Text('Keluar'),
+                                content: Text(
+                                  'Anda yakin ingin keluar dari aplikasi?',
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Batal'),
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red.shade400,
+                                      foregroundColor: Colors.white,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      // Navigate to login screen
+                                      Navigator.of(
+                                        context,
+                                      ).pushNamedAndRemoveUntil(
+                                        '/',
+                                        (route) => false,
+                                      );
+                                    },
+                                    child: Text('Keluar'),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
                         );
                       },
                     ),
@@ -301,36 +296,31 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildStatItem(BuildContext context, String title, String value, IconData icon) {
+  Widget _buildStatItem(
+    BuildContext context,
+    String title,
+    String value,
+    IconData icon,
+  ) {
     return Column(
       children: [
         Container(
           padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Colors.blue.withOpacity(0.1),
             shape: BoxShape.circle,
           ),
-          child: Icon(
-            icon,
-            color: Theme.of(context).colorScheme.primary,
-            size: 22,
-          ),
+          child: Icon(icon, color: Colors.blue, size: 22),
         ),
         SizedBox(height: 8),
         Text(
           value,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         SizedBox(height: 4),
         Text(
           title,
-          style: TextStyle(
-            color: Colors.grey.shade600,
-            fontSize: 12,
-          ),
+          style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
         ),
       ],
     );
@@ -365,26 +355,25 @@ class ProfileScreen extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
           onTap: () {
             if (navigateTo != null) {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => navigateTo),
-              );
+              Navigator.of(
+                context,
+              ).push(MaterialPageRoute(builder: (context) => navigateTo));
             }
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16.0,
+              vertical: 12.0,
+            ),
             child: Row(
               children: [
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                    color: Colors.blue.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Icon(
-                    icon,
-                    color: Theme.of(context).colorScheme.primary,
-                    size: 24,
-                  ),
+                  child: Icon(icon, color: Colors.blue, size: 24),
                 ),
                 SizedBox(width: 16),
                 Expanded(
@@ -411,40 +400,43 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 isVerified
                     ? Container(
-                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.green.shade50,
-                          borderRadius: BorderRadius.circular(12),
-                          border: Border.all(
-                            color: Colors.green.shade400,
-                            width: 1,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.check_circle,
-                              color: Colors.green.shade600,
-                              size: 14,
-                            ),
-                            SizedBox(width: 4),
-                            Text(
-                              'Terverifikasi',
-                              style: TextStyle(
-                                color: Colors.green.shade700,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Icon(
-                        Icons.arrow_forward_ios,
-                        size: 16,
-                        color: Colors.grey.shade400,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
                       ),
+                      decoration: BoxDecoration(
+                        color: Colors.green.shade50,
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Colors.green.shade400,
+                          width: 1,
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.check_circle,
+                            color: Colors.green.shade600,
+                            size: 14,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'Terverifikasi',
+                            style: TextStyle(
+                              color: Colors.green.shade700,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                    : Icon(
+                      Icons.arrow_forward_ios,
+                      size: 16,
+                      color: Colors.grey.shade400,
+                    ),
               ],
             ),
           ),
@@ -458,9 +450,10 @@ class ProfileScreen extends StatelessWidget {
 class BackgroundPatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.white.withOpacity(0.1)
-      ..style = PaintingStyle.fill;
+    final paint =
+        Paint()
+          ..color = Colors.white.withOpacity(0.1)
+          ..style = PaintingStyle.fill;
 
     final double tileSize = 20;
     final int horizontalTileCount = (size.width / tileSize).ceil() + 1;

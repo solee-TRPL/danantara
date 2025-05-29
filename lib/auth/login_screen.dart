@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import '../services/auth_service.dart';
+import '../services/auth_service.dart';
 import 'dart:ui';
 
 class LoginScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  // final AuthService _authService = AuthService();
+  final AuthService _authService = AuthService();
   bool _isLoading = false;
   bool _obscurePassword = true;
   late AnimationController _animationController;
@@ -110,7 +110,6 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
   @override
   Widget build(BuildContext context) {
     // final size = MediaQuery.of(context).size;
-    final primaryColor = Theme.of(context).primaryColor;
     
     return Scaffold(
       body: SafeArea(
@@ -156,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     // Align(
                     //   alignment: Alignment.topLeft,
                     //   child: IconButton(
-                    //     icon: Icon(Icons.arrow_back_ios, color: primaryColor),
+                    //     icon: Icon(Icons.arrow_back_ios, color: Colors.blue),
                     //     onPressed: () => Navigator.pop(context),
                     //   ),
                     // ),
@@ -183,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                         child: Icon(
                           Icons.lock_open_rounded,
                           size: 70,
-                          color: primaryColor,
+                          color: Colors.blue,
                         ),
                       ),
                     ),
@@ -196,7 +195,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: primaryColor,
+                        color: Colors.blue,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -232,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 labelText: 'Email',
                                 hintText: 'Masukkan email anda',
                                 hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
-                                prefixIcon: Icon(Icons.email_outlined, color: primaryColor),
+                                prefixIcon: Icon(Icons.email_outlined, color: Colors.blue),
                                 filled: true,
                                 fillColor: Colors.white,
                                 border: OutlineInputBorder(
@@ -245,7 +244,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16),
-                                  borderSide: BorderSide(color: primaryColor, width: 1.5),
+                                  borderSide: BorderSide(color: Colors.blue, width: 1.5),
                                 ),
                                 contentPadding: const EdgeInsets.symmetric(vertical: 18),
                               ),
@@ -275,11 +274,11 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 labelText: 'Password',
                                 hintText: 'Masukkan password anda',
                                 hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
-                                prefixIcon: Icon(Icons.lock_outline, color: primaryColor),
+                                prefixIcon: Icon(Icons.lock_outline, color: Colors.blue),
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     _obscurePassword ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                                    color: primaryColor,
+                                    color: Colors.blue,
                                   ),
                                   onPressed: () {
                                     setState(() {
@@ -299,7 +298,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 ),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(16),
-                                  borderSide: BorderSide(color: primaryColor, width: 1.5),
+                                  borderSide: BorderSide(color: Colors.blue, width: 1.5),
                                 ),
                                 contentPadding: const EdgeInsets.symmetric(vertical: 18),
                               ),
@@ -325,7 +324,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               child: Text(
                                 'Lupa Password?',
                                 style: TextStyle(
-                                  color: primaryColor,
+                                  color: Colors.blue,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -341,13 +340,13 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               gradient: LinearGradient(
-                                colors: [primaryColor, primaryColor.withOpacity(0.8)],
+                                colors: [Colors.blue, Colors.blue.withOpacity(0.8)],
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: primaryColor.withOpacity(0.3),
+                                  color: Colors.blue.withOpacity(0.3),
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
@@ -410,7 +409,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.bold,
-                                    color: primaryColor,
+                                    color: Colors.blue,
                                   ),
                                 ),
                               ),

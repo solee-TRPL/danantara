@@ -50,44 +50,44 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
     super.dispose();
   }
 
-  // Future<void> _handleRegister() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     setState(() => _isLoading = true);
+  Future<void> _handleRegister() async {
+    if (_formKey.currentState!.validate()) {
+      setState(() => _isLoading = true);
       
-  //     final result = await _authService.register(
-  //       email: _emailController.text.trim(),
-  //       password: _passwordController.text,
-  //       fullName: _fullNameController.text.trim(),
-  //       phoneNumber: _phoneController.text.trim().isEmpty ? null : _phoneController.text.trim(),
-  //     );
+      final result = await _authService.register(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+        fullName: _fullNameController.text.trim(),
+        phoneNumber: _phoneController.text.trim().isEmpty ? null : _phoneController.text.trim(),
+      );
       
-  //     setState(() => _isLoading = false);
+      setState(() => _isLoading = false);
       
-  //     if (result['success']) {
-  //       // Show success message
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(
-  //           content: const Text('Registrasi berhasil!'),
-  //           backgroundColor: Colors.green[700],
-  //           behavior: SnackBarBehavior.floating,
-  //           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //         ),
-  //       );
-  //       // Navigate to home
-  //       Navigator.pushReplacementNamed(context, '/home');
-  //     } else {
-  //       // Show error
-  //       ScaffoldMessenger.of(context).showSnackBar(
-  //         SnackBar(
-  //           content: Text(result['message'] ?? 'Registrasi gagal'),
-  //           backgroundColor: Colors.red[700],
-  //           behavior: SnackBarBehavior.floating,
-  //           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-  //         ),
-  //       );
-  //     }
-  //   }
-  // }
+      if (result['success']) {
+        // Show success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: const Text('Registrasi berhasil!'),
+            backgroundColor: Colors.green[700],
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+        );
+        // Navigate to home
+        Navigator.pushReplacementNamed(context, '/home');
+      } else {
+        // Show error
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(result['message'] ?? 'Registrasi gagal'),
+            backgroundColor: Colors.red[700],
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          ),
+        );
+      }
+    }
+  }
 
   Widget _buildFormField({
     required TextEditingController controller,
@@ -100,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
     TextInputType keyboardType = TextInputType.text,
     String? Function(String?)? validator,
   }) {
-    final primaryColor = Theme.of(context).primaryColor;
+    final primaryColor = Colors.blue;
     
     return Material(
       elevation: 5,
@@ -114,12 +114,12 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
           labelText: label,
           hintText: hint,
           hintStyle: TextStyle(color: Colors.grey[400], fontSize: 14),
-          prefixIcon: Icon(icon, color: primaryColor),
+          prefixIcon: Icon(icon, color: Colors.blue),
           suffixIcon: isObscureToggle
               ? IconButton(
                   icon: Icon(
                     obscureText ? Icons.visibility_outlined : Icons.visibility_off_outlined,
-                    color: primaryColor,
+                    color: Colors.blue,
                   ),
                   onPressed: onToggleObscure,
                 )
@@ -211,7 +211,7 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
                           borderRadius: BorderRadius.circular(24),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.2),
+                              color: Colors.blue.withOpacity(0.3),
                               blurRadius: 15,
                               offset: const Offset(0, 5),
                             ),
@@ -220,7 +220,7 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
                         child: Icon(
                           Icons.person_add_rounded,
                           size: 60,
-                          color: primaryColor,
+                          color: Colors.blue,
                         ),
                       ),
                     ),
@@ -233,7 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: primaryColor,
+                        color: Colors.blue,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -363,13 +363,13 @@ class _RegisterScreenState extends State<RegisterScreen> with SingleTickerProvid
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
                               gradient: LinearGradient(
-                                colors: [primaryColor, primaryColor.withOpacity(0.8)],
+                                colors: [Colors.blue, Colors.blue.withOpacity(0.8)],
                                 begin: Alignment.centerLeft,
                                 end: Alignment.centerRight,
                               ),
                               boxShadow: [
                                 BoxShadow(
-                                  color: primaryColor.withOpacity(0.3),
+                                  color: Colors.blue.withOpacity(0.3),
                                   blurRadius: 10,
                                   offset: const Offset(0, 5),
                                 ),
